@@ -14,6 +14,27 @@ from scipy._lib._util import rng_integers
 from itertools import combinations
 
 
+####################################
+# PATHS
+####################################
+
+questionnaires_dir = './data/questionnaires'
+cortisol_dir = './data/cortisol'
+eyetracking_dir = './data/pupil'
+behav_dir = './data/behavior'
+classifier_dir = './data/classifier'
+
+panas_pre_file = f"{questionnaires_dir}/StressLearn_PANAS_preSECPT.csv"
+panas_post_file = f"{questionnaires_dir}/StressLearn_PANAS_postSECPT.csv"
+cortisol_data_file = f"{cortisol_dir}/StressLearn_Cortisol.csv"
+
+
+
+
+####################################
+# AESTHETICS
+####################################
+
 csfont = {'fontname':'Helvetica'}
 hfont = {'fontname':'Helvetica'}
 plt.rcParams["font.family"] = "Tahoma"
@@ -304,6 +325,30 @@ def get_cortisol_reactivity_df(stress_subIDs, ctrl_subIDs):
 ####################################
 # VISUALIZATION
 ####################################
+
+def get_star_x_y(ax, df, xcol, huecol, valcol, xorder, hueorder, points=True):
+    barxs = np.reshape([line.get_data()[0][0] for line in ax.get_lines()[:len(hueorder)*len(xorder)]], (len(hueorder), len(xorder))).T
+    if points:
+        barys = []
+        for hue in hueorder:
+            for x in xorder:
+                barys.append(np.max(df.loc[(df[xcol] == x) & (df[huecol] == hue)][valcol]))
+        barys = np.reshape(barys, (len(hueorder), len(xorder))).T
+        
+    else:
+        barys = np.reshape([line.get_data()[1][1] for line in ax.get_lines()[:len(hueorder)*len(xorder)]], (len(hueorder), len(xorder))).T
+
+    return barxs, barys
+
+
+def add_sig_compare_line(ax, linex, stary, yshift=None):
+    if yshift is None:
+        yshift = np.diff(ax.get_ylim())[0]*0.05
+    
+    ax.hlines(y=stary, xmin=linex[0], xmax=linex[1], color='k', linewidth=1)
+    ax.vlines(x=linex[0], ymin=stary-yshift*0.2, ymax=stary, color='k', capstyle='projecting', linewidth=1)
+    ax.vlines(x=linex[1], ymin=stary-yshift*0.2, ymax=stary, color='k', capstyle='projecting', linewidth=1)
+    
 
 def lm_bootstrap(df, x, y, iterations=9999, CI_percentile=95, two_tailed=True, verbose=False):
     '''
