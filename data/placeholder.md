@@ -6,5 +6,5 @@ Should contain the following:
 `cortisol/`  
 `masked_fmri/`  
 `pupil/`  
-`questionnaires/`
+`questionnaires/`  
 `subject_info.txt`
