@@ -2,8 +2,8 @@
 Code repository for "Stress drives the hippocampus to prioritize statistical prediction over episodic encoding".
 
 **Getting Started:**  
-Download and unzip all data from the Zenodo data repository (https://dx.doi.org/10.5281/zenodo.20949110). Place in the `data` directory.  
-These data are a preprocessed starting point for the analyses described in the paper. Raw fMRI data is available in the NIMH Data Archive (https://dx.doi.org/10.15154/5sec-q259).  
+Download and unzip all data from the Zenodo data repository (https://doi.org/10.5281/zenodo.20949110). Place in the `data` directory.  
+These data are a preprocessed starting point for the analyses described in the paper. Raw fMRI data is available in the NIMH Data Archive (https://doi.org/10.15154/5sec-q259).  
 
 **Directories:**  
 * `conda_env`: Contains YML files listing specific packages used in analysis. `environment_clean.yml` contains a clean export of packages used to run all analyses. `environment_mirror.yml` contains an exact mirror of the conda environment used for analysis.
