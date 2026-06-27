@@ -1,0 +1,27 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - deepdish
+  - git-annex
+  - ipython
+  - jupyterlab
+  - matplotlib
+  - networkx
+  - nilearn
+  - notebook
+  - nxviz
+  - pandas
+  - python==3.7.12
+  - scikit-learn
+  - seaborn
+  - watchdog
+  - brainiak
+  - webcolors=1.13
+  - pip
+  - qt-main
+  - r-base
+  - r-essentials
+  - r-emmeans
+  - conda-forge::r-lme4
+  - conda-forge::r-sjstats
