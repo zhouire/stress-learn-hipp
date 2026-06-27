@@ -6,4 +6,4 @@
 */.ipynb_checkpoints/*
 **/__pycache__/
 /data/*
-!/data/placeholder.txt
+!/data/placeholder.md
